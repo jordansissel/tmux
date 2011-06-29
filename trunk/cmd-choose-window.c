@@ -89,10 +89,12 @@ cmd_choose_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 			left = right = "";
 
 		window_choose_add(wl->window->active,
-		    wm->idx, "%3d: %s%s [%ux%u] (%u panes%s)%s%s%s",
-		    wm->idx, w->name, flags, w->sx, w->sy, window_count_panes(w),
-		    w->active->fd == -1 ? ", dead" : "",
-		    left, title, right);
+		    wm->idx, "%s% 13s: %s", flags, title, w->name);
+		//window_choose_add(wl->window->active,
+		    //wm->idx, "%3d: %s%s [%ux%u] (%u panes%s)%s%s%s",
+		    //wm->idx, w->name, flags, w->sx, w->sy, window_count_panes(w),
+		    //w->active->fd == -1 ? ", dead" : "",
+		    //left, title, right);
 
 		xfree(flags);
 	}

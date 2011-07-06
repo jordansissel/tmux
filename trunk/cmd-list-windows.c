@@ -76,9 +76,11 @@ cmd_list_windows_session(struct session *s, struct cmd_ctx *ctx)
 
 	RB_FOREACH(wl, winlinks, &s->windows) {
 		layout = layout_dump(wl->window);
-		ctx->print(ctx, "%d: %s [%ux%u] [layout %s]%s",
-		    wl->idx, wl->window->name, wl->window->sx, wl->window->sy,
-		    layout, wl == s->curw ? " (active)" : "");
+		//ctx->print(ctx, "%d: %s [%ux%u] [layout %s]%s",
+		    //wl->idx, wl->window->name, wl->window->sx, wl->window->sy,
+		    //layout, wl == s->curw ? " (active)" : "");
+		ctx->print(ctx, "%d: % 13s: %s", wl->idx, wl->window->active->screen->title,
+		           wl->window->name);
 		xfree(layout);
 	}
 }
